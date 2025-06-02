@@ -10,7 +10,8 @@ from utils.printing import print_fit_output
 
 # --------------- Extract luminosity from images ---------------
 # This script extracts luminosity from images of a cathode ray tube experiment.
-# It allows the user to click on a point in the image, and it calculates the average brightness in a region around that point.
+# It allows the user to click on a point in the image, and it calculates the average
+# brightness in a region around that point.
 # It then saves the results to an Excel file and plots the data with a fitted curve.
 
 image_dir = 'C:/physics/lab/lab-data/Semester-B/electron-ecceleration/second-part-photos'  # Replace with your folder
