@@ -2,13 +2,16 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-
-# --- Config ---
 from modules.fitter.data_fitter import DataFitter
 from modules.fitter.fit_function import ExponentialFit, LinearFit
 from modules.plotter.plotter import PlotterParams, Plotter
 from utils.data_table import DataTable
 from utils.printing import print_fit_output
+
+# --------------- Extract luminosity from images ---------------
+# This script extracts luminosity from images of a cathode ray tube experiment.
+# It allows the user to click on a point in the image, and it calculates the average brightness in a region around that point.
+# It then saves the results to an Excel file and plots the data with a fitted curve.
 
 image_dir = 'C:/physics/lab/lab-data/Semester-B/electron-ecceleration/second-part-photos'  # Replace with your folder
 # ROI_SIZE = 45  # Region size (in pixels) around your click
@@ -159,39 +162,11 @@ for filename in voltages:
     })
     cv2.waitKey(0)
 
-# --- Sort and plot the data ---
-# brightness_data.sort()
-# voltages_sorted, brightness_sorted, errors = zip(*brightness_data)
-#
-# plt.plot(voltages_sorted, brightness_sorted, 'o-', yerr=errors, color='green', capsize=5)
-# plt.xlabel('Accelerating Voltage (V)')
-# plt.ylabel('Brightness (Average Value)')
-# plt.title('CRT Dot Brightness vs Voltage')
-# plt.grid(True)
-# plt.tight_layout()
-# plt.show()
-
-# After collecting data
-# brightness_data.sort()
-# voltages, brightness, errors = zip(*brightness_data)
-#
-# plt.errorbar(voltages, brightness, yerr=errors, fmt='o-', color='green', capsize=5)
-# plt.xlabel('Accelerating Voltage (V)')
-# plt.ylabel('Brightness ± std')
-# plt.title('CRT Dot Brightness vs Voltage')
-# plt.grid(True)
-# plt.tight_layout()
-# plt.show()
-
-
-print(brightness_data)
-
 column_indexes = [0, 1, 2, 3]
 data_table = DataTable.from_list(brightness_data, main_columns_indxs=column_indexes,
                                  column_names=["Voltage (V)", "Voltage Error (V)", "Brightness", "Brightness Error"])
 # data_table = DataTable.from_excel(file_path="C:/physics/lab/lab-data/Semester-B/electron-ecceleration/output.xlsx")
 
-print(data_table)
 # data_table.data_table.to_excel("C:/physics/lab/lab-data/Semester-B/electron-ecceleration/output-max-brightness.xlsx",
 #                                index=False)  # Windows
 
