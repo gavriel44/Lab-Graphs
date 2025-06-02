@@ -1,17 +1,19 @@
 from modules.fitter.data_fitter import DataFitter
-from modules.fitter.fit_function import LinearFit, BRMoodleFit, SinusoidalFit, BRZFit
+from modules.fitter.fit_function import LinearFit, BRMoodleFit, SinusoidalFit, BRZFit, ExponentialFit
 from modules.plotter.plotter import Plotter, PlotterParams
 from utils.data_table import DataTable
 from utils.printing import print_fit_output
 
 
 def main():
-    # file_path = r"C:/physics/lab/lab-data/Semester-B/magnetism/Part1-local-gavri-comp-2.xlsx"
-    file_path = r"C:/physics/lab/lab-data/Semester-B/magnetism/Part2.xlsx"
+    # file_path = r"C:/physics/lab/lab-data/Semester-B/electron-ecceleration/output.xlsx"
+    file_path = r"C:/physics/lab/lab-data/Semester-B/electron-ecceleration/output-max-brightness.xlsx"
     column_indexes = [0, 1, 2, 3]
-    data_table = DataTable(file_path=file_path, main_columns_indxs=column_indexes)
-    # fit_function = BRMoodleFit(initial_guesses=[0, 0, 1])
-    # fit_function = BRZFit(initial_guesses=[2, 1, 0, 0])
+    data_table = DataTable.from_excel(file_path=file_path, main_columns_indxs=column_indexes)
+
+    print(data_table)
+
+    # fit_function = ExponentialFit(initial_guesses=[400, 610, 0.007])
     fit_function = LinearFit()
 
     fitter = DataFitter(data_table, fit_function)

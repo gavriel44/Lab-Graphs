@@ -58,6 +58,13 @@ class Plotter:
         axs[0].errorbar(x, y, xerr=delta_x, yerr=delta_y, fmt='.b', label='Data',
                         ecolor='gray')  # Change the label if needed
 
+        # axs[0].errorbar(x[:9], y[:9], xerr=delta_x[:9], yerr=delta_y[:9],
+        #                 fmt='.b', color='orange', ecolor='gray', label='First 12 points')
+        #
+        # # Remaining points
+        # axs[0].errorbar(x[9:], y[9:], xerr=delta_x[9:], yerr=delta_y[9:],
+        #                 fmt='.b', ecolor='gray', label='Other points')
+
         fit_params = self.plotter_params.fit_params
         fit_params_error = self.plotter_params.fit_params_error
         chi2_red = self.plotter_params.chi2_red

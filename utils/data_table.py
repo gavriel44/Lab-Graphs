@@ -6,13 +6,25 @@ from scipy.odr import Model, ODR, RealData
 
 
 class DataTable:
-    def __init__(self, file_path, main_columns_indxs=[0, 1, 2, 3]):
+    def __init__(self, data_table, main_columns_indxs=[0, 1, 2, 3]):
         self.main_columns_indxs = main_columns_indxs
+        self.data_table = data_table
 
-        self.data_table = self.get_excel(file_path)
         self.x, self.delta_x, self.y, self.delta_y = self.choose_columns(self.data_table, main_columns_indxs)
 
-    def get_excel(self, file_path, sheet_number=0):
+    @classmethod
+    def from_excel(cls, file_path, main_columns_indxs=[0, 1, 2, 3]):
+        data_table = cls.get_excel(file_path)
+
+        return cls(data_table, main_columns_indxs)
+
+    @classmethod
+    def from_list(cls, data_list, column_names, main_columns_indxs=[0, 1, 2, 3]):
+        data_table = pd.DataFrame(data_list, columns=column_names)
+        return cls(data_table, main_columns_indxs)
+
+    @staticmethod
+    def get_excel(file_path, sheet_number=0):
         # file_path = r"/content/FreeFallGroupD.xls" # Replace with your file path: r"/contents/<your file name>.xlsx"
         return pd.read_excel(file_path, sheet_name=sheet_number)
 
@@ -34,3 +46,6 @@ class DataTable:
 
     def columns(self):
         return self.data_table.columns
+
+    def __str__(self):
+        return f'${self.data_table}'

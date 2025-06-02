@@ -45,12 +45,12 @@ class OpticsFit(FitFunction):
 
 
 class ExponentialFit(FitFunction):
-    def __init__(self):
-        super().__init__(self.exponential_func, initial_guesses=[1, 1, 1])
+    def __init__(self, initial_guesses=[1, 1, 1]):
+        super().__init__(self.exponential_func, initial_guesses=initial_guesses)
 
     @staticmethod
     def exponential_func(params, x):
-        return params[1] * np.exp(-(1 / params[2]) * x) + params[0]
+        return params[1] * np.exp(params[2] * x) + params[0]
 
 
 class SinusoidalFit(FitFunction):
@@ -86,4 +86,5 @@ class BRZFit(FitFunction):
 
     @staticmethod
     def b_r_z_func(params, x):
-        return params[0] / (params[1] + ((x + params[2]) ** 2)) ** (3 / 2) + params[3]
+        return params[0] / ((params[1]**2) + ((x + params[2]) ** 2)) ** (3 / 2) + params[3]
+        # return params[0] / (0.027225 + ((x + params[1]) ** 2)) ** (3 / 2) + params[2]
