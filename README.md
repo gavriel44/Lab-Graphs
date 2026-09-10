@@ -2,7 +2,7 @@
 
 **Curve fitting for laboratory measurements, with uncertainties in both axes.**
 
-LabGraphs is a small Python library used in physics laboratory courses at Tel Aviv
+LabGraphs is a small Python library I developed to use in my physics laboratory courses at Tel Aviv
 University to plot experimental measurements, fit curves, and visualize residuals.
 It accepts arrays, CSV files, or Excel columns and reports fitted parameters,
 uncertainties, and goodness-of-fit statistics. It grew out of undergraduate physics
