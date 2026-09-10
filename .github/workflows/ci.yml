@@ -24,6 +24,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       MPLBACKEND: Agg
+      PYTHONUTF8: "1"
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -34,6 +35,7 @@ jobs:
       - run: python -m pytest --cov=labgraphs --cov-report=term-missing
       - run: python examples/ohms_law.py
       - run: python examples/custom_model.py
+      - run: python examples/nfw_density_profile.py
 
   package:
     runs-on: ubuntu-latest
