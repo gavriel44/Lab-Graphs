@@ -143,6 +143,8 @@ measurements across the whole galactic radius
 (`data/milky_way_dark_matter_density.xlsx`, columns `r (kpc)`,
 `r_error (kpc)`, `ρ (M☉/kpc³)`, `ρ_error (M☉/kpc³)`):
 
+![NFW fit to the Milky Way's dark matter density profile and residuals](docs/nfw_density_profile.png)
+
 ```python
 from labgraphs import Model, fit, plot_fit, read_excel
 
