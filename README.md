@@ -2,7 +2,7 @@
 
 **Curve fitting for laboratory measurements, with uncertainties in both axes.**
 
-LabGraphs is a small Python library used in physics laboratory courses at Tel Aviv
+LabGraphs is a small Python library I developed to use in my physics laboratory courses at Tel Aviv
 University to plot experimental measurements, fit curves, and visualize residuals.
 It accepts arrays, CSV files, or Excel columns and reports fitted parameters,
 uncertainties, and goodness-of-fit statistics. It grew out of undergraduate physics
@@ -142,6 +142,8 @@ to the Milky Way's dark matter density, derived from HI 21 cm rotation-curve
 measurements across the whole galactic radius
 (`data/milky_way_dark_matter_density.xlsx`, columns `r (kpc)`,
 `r_error (kpc)`, `ρ (M☉/kpc³)`, `ρ_error (M☉/kpc³)`):
+
+![NFW fit to the Milky Way's dark matter density profile and residuals](docs/nfw_density_profile.png)
 
 ```python
 from labgraphs import Model, fit, plot_fit, read_excel
